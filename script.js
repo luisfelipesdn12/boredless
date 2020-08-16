@@ -27,7 +27,10 @@ function setGradientRandomly() {
 
             changeBackgroundColor(c1, c2);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log(err);
+            changeBackgroundColor("#009FFF", "#ec2F4B");
+        });
 }
 
 allSuggestionKeys = [];

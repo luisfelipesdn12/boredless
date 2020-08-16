@@ -19,10 +19,18 @@ body {
 .card {
     grid-row-start: 2;
     grid-row-end: 3;
-
     height: max-content;
     margin-right: 4%;
     margin-left: 4%;
+}
+
+@media(min-width: 800px) {
+    body {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card {
+        grid-column: 2;
+    }
 }
 
 #side-link-place {
@@ -41,9 +49,8 @@ body {
 
 #previous {
     grid-column: 1;
-    position: fixed;
-    text-align: right;
-    margin-top: 7%;
+    text-align: left;
+    padding-top: 20%;
     text-decoration-line: underline;
     text-decoration-color: #aaaaaa;
     cursor: pointer;
