@@ -23,6 +23,7 @@ function populateWithANewSuggestion() {
             console.log("All my response:");
             console.log(activity);
 
+            document.getElementById("side-link-place").style.display = "none";
             document.getElementById("type-of-activity").innerHTML = activity.type;
             document.getElementById("activity").innerHTML = activity.activity;
 
