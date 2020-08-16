@@ -4,7 +4,7 @@ function changeBackgroundColor(c1, c2) {
 }
 
 function setGradientRandomly() {
-    fetch("http://uigradients.com/gradients.json")
+    fetch("https://uigradients.com/gradients.json")
         .then(res => res.json())
         .then(gradientsList => {
             const colors = gradientsList[Math.floor(Math.random() * gradientsList.length)].colors;
@@ -17,7 +17,7 @@ function setGradientRandomly() {
 }
 
 function populateWithANewSuggestion() {
-    fetch("http://www.boredapi.com/api/activity")
+    fetch("https://www.boredapi.com/api/activity")
         .then(res => res.json())
         .then(activity => {
             console.log("All my response:");
