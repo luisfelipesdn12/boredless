@@ -51,13 +51,14 @@ body {
 
 #generate {
     grid-column: 3;
-    text-align: left;
+    text-align: center;
     margin-top: 15%;
     cursor: pointer;
 }
 
 #generate-centered {
     grid-column: 2;
+    text-align: center;
     margin-top: 15%;
     cursor: pointer;
 }
