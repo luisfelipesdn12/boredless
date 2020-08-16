@@ -24,7 +24,7 @@ body {
     margin-left: 4%;
 }
 
-@media(min-width: 800px) {
+@media(min-aspect-ratio: 1.5/1) {
     body {
         grid-template-columns: 1fr 1fr 1fr;
     }
