@@ -32,3 +32,32 @@ body {
 #type-of-activity {
     text-transform: capitalize;
 }
+
+#previous-and-button {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#previous {
+    grid-column: 1;
+    position: fixed;
+    text-align: right;
+    margin-top: 7%;
+    text-decoration-line: underline;
+    text-decoration-color: #aaaaaa;
+    cursor: pointer;
+}
+
+#generate {
+    grid-column: 3;
+    text-align: left;
+    margin-top: 15%;
+    cursor: pointer;
+}
+
+#generate-centered {
+    grid-column: 2;
+    margin-top: 15%;
+    cursor: pointer;
+}

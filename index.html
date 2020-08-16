@@ -11,6 +11,8 @@
 <body>
     <script>
         setGradientRandomly();
+
+        setTimeout(showLoadingMessageIfIsNotLoaded, 1000);
     </script>
 
     <div class="card text-center bg-light mb-3">
@@ -18,12 +20,17 @@
         <div class="card-body">
         <h5 class="card-title" id="activity"></h5>
         <p class="card-text" id="side-link-place">This may help you: <a id="side-link">suggestion link</a>.</p>
-        <button class="btn btn-info" onclick="populateWithANewSuggestion()">Generate</button>
+        <div id=previous-and-button>
+            <a onclick="populateWithThePreviousSuggestion()">
+                <p class="card-text" id="previous" style="display: none;"><small class="text-muted">Previous</small></p>
+            </a>
+            <button class="btn btn-info" id="generate-centered" onclick="populateWithTheNextSuggestion()">Generate</button>
+        </div>
         </div>
     </div>
 
     <script>
-        populateWithANewSuggestion();
+        initialPopulation();
     </script>
 </body>
 </html>
