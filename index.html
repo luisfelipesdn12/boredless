@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boredless</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <script>
+        setGradientRandomly();
+    </script>
+
+    <div class="card text-center bg-light mb-3">
+        <div class="card-header" id="type-of-activity"></div>
+        <div class="card-body">
+        <h5 class="card-title" id="activity"></h5>
+        <p class="card-text" id="side-link-place">This may help you: <a href="http://google.com" id="side-link">suggestion link</a>.</p>
+        <button class="btn btn-info" onclick="populateWithANewSuggestion()">Generate</button>
+        </div>
+    </div>
+
+    <script>
+        populateWithANewSuggestion();
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+:root {
+    --first-color-to-gradient: #FFFF;
+    --second-color-to-gradient: #FFFF;
+}
+
+body {
+    background: var(--first-color-to-gradient);
+    background: linear-gradient(165deg, var(--first-color-to-gradient) 0%, var(--second-color-to-gradient)); 
+    background: -moz-linear-gradient(165deg, var(--first-color-to-gradient) 0%, var(--second-color-to-gradient));
+    background: -webkit-linear-gradient(165deg, var(--first-color-to-gradient) 0%, var(--second-color-to-gradient));
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.card {
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    margin-right: 4%;
+    margin-left: 4%;
+}
+
+#side-link-place {
+    display: none;
+}
+
+#type-of-activity {
+    text-transform: capitalize;
+}
