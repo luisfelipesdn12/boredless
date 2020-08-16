@@ -3,7 +3,7 @@
 function showLoadingMessageIfIsNotLoaded() {
     if (document.getElementById("activity").innerHTML == "") {
         document.getElementById("type-of-activity").innerHTML = "Loading...";
-        document.getElementById("activity").innerHTML = "If it is take longer, refresh the page.";
+        document.getElementById("activity").innerHTML = "If this take longer, refresh the page or check your internet connection.";
     }
 }
 
