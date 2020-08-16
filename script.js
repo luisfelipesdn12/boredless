@@ -49,16 +49,6 @@ async function getRandomActivityKey() {
 async function nextSuggestion() {
     index = index + 1;
 
-    if (index > 0) {
-        // If has a previous value, the `previous` button appears.
-        document.getElementById("previous").style.display = "block";
-
-        // And the main button is moved to the right.
-        if (document.getElementById("generate-centered") !== null) {
-            document.getElementById("generate-centered").id = "generate";
-        }
-    }
-
     if (index >= allSuggestionKeys.length) {
         await getRandomActivityKey()
                 .then(key => allSuggestionKeys.push(key));
@@ -73,12 +63,7 @@ function previousSuggestion() {
     if (index !== 0) {
         index = index - 1;
     }
-    if (index === 0) {
-        // If there's no more previous the main buttons goes to the
-        // center and the `previous` button disappears. 
-        document.getElementById("previous").style.display = "none";
-        document.getElementById("generate").id = "generate-centered";
-    }
+
     return allSuggestionKeys[index];
 }
 
@@ -117,5 +102,34 @@ function populateWithAKeySuggestion(key) {
                 document.getElementById("side-link").href = activity.link;
                 document.getElementById("side-link-place").style.display = "block";
             }
+
+            if (index === 0) {
+                // If there's no more previous the main buttons goes to the
+                // center and the `previous` button disappears. 
+                document.getElementById("previous").style.display = "none";
+                document.getElementById("generate").id = "generate-centered";
+            } else if (index > 0) {
+                // If has a previous value, the `previous` button appears.
+                document.getElementById("previous").style.display = "block";
+        
+                // And the main button is moved to the right.
+                if (document.getElementById("generate-centered") !== null) {
+                    document.getElementById("generate-centered").id = "generate";
+                }
+            }
+
+
         });
 }
+
+function checkKeyCode(e) {
+    // If is right arrow or space, goes to the next.
+    if (e.keyCode === 39 || e.keyCode === 32) {
+        populateWithTheNextSuggestion();
+    // If is left arrow, goes to the previous.
+    } else if (e.keyCode === 37) {
+        populateWithThePreviousSuggestion();
+    }
+}
+
+document.onkeyup = checkKeyCode;
