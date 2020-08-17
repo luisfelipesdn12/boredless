@@ -16,7 +16,8 @@ function changeBackgroundColor(c1, c2) {
     document.documentElement.style.setProperty('--first-color-to-gradient', c1);
     document.documentElement.style.setProperty('--second-color-to-gradient', c2);
 
-    arrowNoteInDark = (lightOrDark(c2) === 'light');
+    let mixOfC1andC2 = mix(c1.substr(1, c1.length -1), c2.substr(1, c2.length - 1));
+    arrowNoteInDark = (lightOrDark(mixOfC1andC2) === 'light');
 
     if (arrowNoteInDark) {
         document.getElementById("arrows-note").src = "./assets/arrows_note_dark.svg"
@@ -194,3 +195,27 @@ function lightOrDark(color) {
         return 'dark';
     }
 }
+
+// Color blend function taken from https://gist.github.com/jedfoster/7939513
+var mix = function(color_1, color_2, weight) {
+    function d2h(d) { return d.toString(16); }  // convert a decimal value to hex
+    function h2d(h) { return parseInt(h, 16); } // convert a hex value to decimal 
+  
+    weight = (typeof(weight) !== 'undefined') ? weight : 50; // set the weight to 50%, if that argument is omitted
+  
+    var color = "#";
+  
+    for(var i = 0; i <= 5; i += 2) { // loop through each of the 3 hex pairs—red, green, and blue
+      var v1 = h2d(color_1.substr(i, 2)), // extract the current pairs
+          v2 = h2d(color_2.substr(i, 2)),
+          
+          // combine the current pairs from each source color, according to the specified weight
+          val = d2h(Math.floor(v2 + (v1 - v2) * (weight / 100.0))); 
+  
+      while(val.length < 2) { val = '0' + val; } // prepend a '0' if val results in a single digit
+      
+      color += val; // concatenate val to our new color string
+    }
+      
+    return color; // PROFIT!
+  };
