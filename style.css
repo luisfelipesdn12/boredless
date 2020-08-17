@@ -24,12 +24,90 @@ body {
     margin-left: 4%;
 }
 
+footer {
+    display: none;
+}
+
 @media(min-aspect-ratio: 1.5/1) {
     body {
         grid-template-columns: 1fr 1fr 1fr;
     }
     .card {
         grid-column: 2;
+    }
+
+    footer {
+        display: block;
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    @keyframes arrowNoteAnimation {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    @-o-keyframes arrowNoteAnimation {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    @-moz-keyframes arrowNoteAnimation {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    @-webkit-keyframes arrowNoteAnimation {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    #arrows-note {
+        margin-top: 30%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+
+        -webkit-animation: arrowNoteAnimation 2s infinite;
+        -moz-animation: arrowNoteAnimation 2s infinite;
+        -o-animation: arrowNoteAnimation 2s infinite;
+        animation: arrowNoteAnimation 2s infinite;
+    }
+
+    @keyframes arrowNoteFadeOut {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 0; }
+    }
+    @-o-keyframes arrowNoteFadeOut {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 0; }
+    }
+    @-moz-keyframes arrowNoteFadeOut {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 0; }
+    }
+    @-webkit-keyframes arrowNoteFadeOut {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.5; }
+        100% { opacity: 0; }
+    }
+
+    #arrow-note-fade-out {
+        margin-top: 30%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+
+        -webkit-animation: arrowNoteFadeOut 4s;
+        -moz-animation: arrowNoteFadeOut 4s;
+        -o-animation: arrowNoteFadeOut 4s;
+        animation: arrowNoteFadeOut 4s;
     }
 }
 

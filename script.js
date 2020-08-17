@@ -1,3 +1,5 @@
+var arrowNoteInDark;
+
 // If there's nothing in the activity id, it put a
 // message saying that the page is loading.
 function showLoadingMessageIfIsNotLoaded() {
@@ -13,6 +15,14 @@ function showLoadingMessageIfIsNotLoaded() {
 function changeBackgroundColor(c1, c2) {
     document.documentElement.style.setProperty('--first-color-to-gradient', c1);
     document.documentElement.style.setProperty('--second-color-to-gradient', c2);
+
+    arrowNoteInDark = (lightOrDark(c2) === 'light');
+
+    if (arrowNoteInDark) {
+        document.getElementById("arrows-note").src = "./assets/arrows_note_dark.svg"
+    } else {
+        document.getElementById("arrows-note").src = "./assets/arrows_note_light.svg"
+    }
 }
 
 // Catch two colors in the uigradients api and change
@@ -126,6 +136,12 @@ function checkKeyCode(e) {
     // If is right arrow or space, goes to the next.
     if (e.keyCode === 39 || e.keyCode === 32) {
         populateWithTheNextSuggestion();
+
+        // If the user has already used the keyboard, remove the note.
+        if (document.getElementById("arrows-note") !== null) {
+            document.getElementById("arrows-note").id = "arrow-note-fade-out";
+            setTimeout(() => document.getElementById("arrow-note-fade-out").style.display = "none", 4000);
+        }
     // If is left arrow, goes to the previous.
     } else if (e.keyCode === 37) {
         populateWithThePreviousSuggestion();
@@ -133,3 +149,48 @@ function checkKeyCode(e) {
 }
 
 document.onkeyup = checkKeyCode;
+
+// This function was taken from https://awik.io/determine-color-bright-dark-using-javascript/
+function lightOrDark(color) {
+
+    // Variables for red, green, blue values
+    var r, g, b, hsp;
+    
+    // Check the format of the color, HEX or RGB?
+    if (color.match(/^rgb/)) {
+
+        // If RGB --> store the red, green, blue values in separate variables
+        color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+        
+        r = color[1];
+        g = color[2];
+        b = color[3];
+    } 
+    else {
+        
+        // If hex --> Convert it to RGB: http://gist.github.com/983661
+        color = +("0x" + color.slice(1).replace( 
+        color.length < 5 && /./g, '$&$&'));
+
+        r = color >> 16;
+        g = color >> 8 & 255;
+        b = color & 255;
+    }
+    
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    hsp = Math.sqrt(
+    0.299 * (r * r) +
+    0.587 * (g * g) +
+    0.114 * (b * b)
+    );
+
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp>127.5) {
+
+        return 'light';
+    } 
+    else {
+
+        return 'dark';
+    }
+}
